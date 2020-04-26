@@ -46,7 +46,7 @@ def main(argv):
         print(req.url)
         print('Processing page ' + str(i) + ' of ' + str(pages))
 
-    create_file(req.url)
+    create_file(req.url, place_name)
 
 
 def get_text(el, class_name):
@@ -98,9 +98,13 @@ def contains(list, filter):
     return False
 
 
-def create_file(url):
+def create_file(url, place_name):
     global _skills
-    with open('stackoverflow-skill.txt', mode='wt', encoding='utf-8') as f:
+
+    if place_name is None:
+        place_name = 'stackoverflow'
+
+    with open(place_name + '-skill.txt', mode='wt', encoding='utf-8') as f:
         f.write(url)
         f.write('\n')
         _skills.sort(key=operator.attrgetter('count'), reverse=True)
