@@ -22,10 +22,10 @@ import operator
 from lxml.html import fromstring
 ```
 ### Linux
-Don't forget to give execution permission to this script.
+Don't forget to give execution permission for the script.
 
 ```
-chmod +x ./webscraping.py
+$ chmod +x ./webscraping.py
 ```
 
 This script you can use like the following example below:
