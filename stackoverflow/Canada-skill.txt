@@ -1,4 +1,4 @@
-https://stackoverflow.com/jobs?d=20&l=Canada&u=Km&pg=5
+https://stackoverflow.com/jobs?d=20&l=Canada&u=Km&pg=20
 
 java: 41
 javascript: 20
@@ -36,8 +36,8 @@ kotlin: 3
 ruby: 3
 rest: 3
 redux: 3
-embedded: 3
 asp.net: 3
+embedded: 3
 ios: 3
 mobile: 3
 sql-server: 3
@@ -74,10 +74,10 @@ google-cloud-platform: 1
 struts: 1
 react-redux: 1
 rust: 1
+blazor: 1
 real-time: 1
 do178-b: 1
 rtos: 1
-blazor: 1
 arcgis-js-api: 1
 user-interface: 1
 software-design: 1
