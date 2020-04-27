@@ -21,6 +21,12 @@ import requests
 import operator
 from lxml.html import fromstring
 ```
+### Linux
+Don't forget to give execution permission to this script.
+
+```
+chmod +x ./webscraping.py
+```
 
 This script you can use like the following example below:
 ```
