@@ -22,7 +22,6 @@ def main(argv):
     if len(sys.argv) >= 3:
         pages = int(sys.argv[2])
 
-    last_page = 0
     is_continue = True
     i = 0
 
