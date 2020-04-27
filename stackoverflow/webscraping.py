@@ -3,31 +3,26 @@
 import sys
 import requests
 import operator
+import re
 from lxml.html import fromstring
 
 _skills = [] # empty list
+_num_jobs_expected = 0
 _place_name = None
 _usa_states = ["AK", "AL", "AR", "AS", "AZ", "CA", "CO", "CT", "DC", "DE", "FL", "GA", "GU", "HI", "IA", "ID", "IL", "IN", "KS", "KY", "LA", "MA", "MD", "ME", "MI", "MN", "MO", "MP", "MS", "MT", "NC", "ND", "NE", "NH", "NJ", "NM", "NV", "NY", "OH", "OK", "OR", "PA", "PR", "RI", "SC", "SD", "TN", "TX", "UM", "UT", "VA", "VI", "VT", "WA", "WI", "WV", "WY"]
 _canada_provinces = ["AB", "BC", "MB", "NB", "NL", "NT", "NS", "NU", "ON", "PE", "QC", "SK", "YT"]
 
 def main(argv):
     
-    global _place_name
-
-    pages = 1
+    global _place_name   
+    global _num_jobs_expected
 
     if len(sys.argv) >= 2:
         _place_name = sys.argv[1] 
 
-    if len(sys.argv) >= 3:
-        pages = int(sys.argv[2])
-
     is_continue = True
     i = 0
-
-    # Uncomment for debugging...
-    #_place_name = 'Brazil'
-
+    
     while is_continue:
 
         if i == 0:
@@ -42,17 +37,29 @@ def main(argv):
         req = requests.get('https://stackoverflow.com/jobs', params=query)
         html_page = fromstring(req.content)
 
-        # TODO: Calculate pages automatically...
+        if _num_jobs_expected == 0:
+            _num_jobs_expected = get_num_jobs(html_page)        
+
+        if _num_jobs_expected > 0:
+            process_page(html_page)
+            i += 1
         
-        process_page(html_page)
-        i += 1
-
-        is_continue = pages >= i
-
         print(req.url)
-        print('Processing page ' + str(i) + ' of ' + str(pages))
+        print('Jobs to be processed: ' + str(_num_jobs_expected))
+        is_continue = _num_jobs_expected - 1 > 0
 
     create_file(req.url, _place_name)
+
+def get_num_jobs(page):
+    
+    regex = r"\d+"
+    elements = page.find_class('description fc-light fs-body1')    
+    if (elements is not None):
+        for el in elements:  
+            matches = re.findall(regex, el.text.replace(',',''), re.DOTALL)
+            if matches is not None and len(matches) > 0:
+                return int(matches[0])
+    return 0
 
 
 def get_text(el, class_name):
@@ -74,21 +81,24 @@ def process_results(list_result):
             process_listed_jobs(x)
 
 
-def process_listed_jobs(elements):
+def process_listed_jobs(elements):   
     if elements is not None:
         for el in elements:
-            grids = el.find_class('grid')
-            if grids:
-                process_job_skills(grids)
+            grids = el.find_class('grid--cell fl1')
+            if len(grids) > 0:
+                process_job_skills(grids)           
 
 
 def process_job_skills(elements):
+    global _num_jobs_expected
     if elements is not None:
-        for x in elements:
-            if is_place(x):
+        for x in elements:           
+            if is_place(x):                              
+                _num_jobs_expected -= 1                  
                 skills = x.find_class('post-tag no-tag-menu')
-                for skill in skills:
-                    count_skills(skill.text)
+                if len(skills) > 0:                     
+                    for skill in skills:
+                        count_skills(skill.text)
         
 
 def is_place(element):

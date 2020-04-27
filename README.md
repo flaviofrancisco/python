@@ -19,6 +19,7 @@ https://lxml.de/
 import sys
 import requests
 import operator
+import re
 from lxml.html import fromstring
 ```
 ### Linux
@@ -30,6 +31,6 @@ $ chmod +x ./webscraping.py
 
 This script you can use like the following example below:
 ```
-$ ./webscraping.py Canada 16
+$ ./webscraping.py Canada
 ```
-Where the first parameter is the country and the second parameter the max number of page to extract the data.
+You can use any country (or city) name (English is recommended)

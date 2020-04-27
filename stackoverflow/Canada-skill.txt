@@ -1,4 +1,4 @@
-https://stackoverflow.com/jobs?d=20&l=Canada&u=Km&pg=20
+https://stackoverflow.com/jobs?d=20&l=Canada&u=Km&pg=5
 
 java: 41
 javascript: 20
@@ -39,9 +39,9 @@ redux: 3
 asp.net: 3
 embedded: 3
 ios: 3
+unix: 3
 mobile: 3
 sql-server: 3
-unix: 3
 scrum: 3
 cloud: 3
 mysql: 2
@@ -89,11 +89,11 @@ artificial-intelligence: 1
 medical: 1
 ejb-3.0: 1
 oracle: 1
-powershell: 1
 javafx: 1
 java-8: 1
 web: 1
 automation: 1
+powershell: 1
 maven: 1
 chef: 1
 dsc: 1

@@ -1,4 +1,4 @@
-https://stackoverflow.com/jobs?d=20&l=Brazil&u=Km&pg=10
+https://stackoverflow.com/jobs?d=20&l=Brazil&u=Km&pg=2
 
 java: 10
 amazon-web-services: 8
