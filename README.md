@@ -3,7 +3,7 @@ The files found in this repository were created only for learning and practice p
 
 ## Stackoverflow - webscraping.py
 
-This script creates a file with a sorted list by quantity of job skills from a given country extracted from http://stackoverflow.com/jobs.
+This script creates a file with a sorted list of skills and the  number of times that skill was listed in a job offer from a given country (you can use also city names) extracted from http://stackoverflow.com/jobs.
 
 ### Dependecies
 
