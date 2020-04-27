@@ -3,7 +3,17 @@ The files found in this repository were created only for learning and practice p
 
 ## Stackoverflow - webscraping.py
 
+This script creates a file with a sorted list by quantity of job skills from a given country extracted from http://stackoverflow.com/jobs.
+
 ### Dependecies
+
+Install Python:
+
+https://www.python.org/
+
+Install lxml
+
+https://lxml.de/
 
 ```
 import sys
