@@ -90,14 +90,7 @@ def populate_skills(skill_name):
     else:
         _skills.append(Skill(skill_name, 1))
 
-
-def contains(list, filter):
-    for x in list:
-        if filter(x):
-            return True
-    return False
-
-
+        
 def create_file(url, place_name):
     global _skills
 
